@@ -17,10 +17,13 @@ function createRow(itemCount) {
 function createItem() {
     item = document.createElement('div');
     item.classList.add('item');
-    //might edit width and height
     item.style.height = '30px';
     item.style.width = '100%';
     item.style.border = '1px solid black';
+
+    item.addEventListener('mouseover', function(event){
+        event.target.style.backgroundColor = 'cyan';
+    });
 
     return item
 }
@@ -30,3 +33,4 @@ for (let i = 0; i < DIM; i++){
     boardRow = createRow(DIM);
     container.appendChild(boardRow);
 }
+

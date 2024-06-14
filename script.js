@@ -4,19 +4,21 @@ let resetBtn = document.querySelector('button');
 
 resetBtn.addEventListener('click', () => {
     let new_dimension = prompt('enter new dimension');
-    while (new_dimension <= 0 || new_dimension > 100) {
-        new_dimension = prompt('ERROR: enter a valid dimension');
+    if (new_dimension != null) {
+        while (new_dimension <= 0 || new_dimension > 100) {
+            new_dimension = prompt('ERROR: enter a valid dimension');
+        }
+        
+        let body = document.querySelector('body'); 
+        let container = document.querySelector('#container'); //might remove
+        body.removeChild(container); 
+    
+        let new_container = document.createElement('div');
+        new_container.setAttribute('id', 'container');
+        body.appendChild(new_container);
+        
+        createBoard(new_dimension);
     }
-    
-    let body = document.querySelector('body'); 
-    let container = document.querySelector('#container'); //might remove
-    body.removeChild(container); 
-
-    let new_container = document.createElement('div');
-    new_container.setAttribute('id', 'container');
-    body.appendChild(new_container);
-    
-    createBoard(new_dimension);
 });
 
 function createRow(itemCount) {

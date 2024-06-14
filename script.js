@@ -34,6 +34,14 @@ function createRow(itemCount) {
     return row
 }
 
+function randomColor() {
+    const MAX_BITS = 256;
+    let r = Math.floor(Math.random() * MAX_BITS);
+    let g = Math.floor(Math.random() * MAX_BITS);
+    let b = Math.floor(Math.random() * MAX_BITS);
+    return `rgb(${r},${g},${b});`;
+}
+
 function createItem() {
     item = document.createElement('div');
     item.classList.add('item');

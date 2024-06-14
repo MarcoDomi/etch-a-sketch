@@ -1,6 +1,10 @@
+body{
+    background-color: gray;
+}
 #container {
     border: 1px black solid;
     width: 960px;
+    background-color: white;
 }
 
 button {

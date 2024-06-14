@@ -1,5 +1,11 @@
+const DEFAULT_DIMENSION = 16;//remove later
 container = document.querySelector('#container');
-const DIM = 16;//remove later
+resetBtn = document.querySelector('button');
+
+resetBtn.addEventListener('click', () => {
+    container.remove();
+    
+});
 
 function createRow(itemCount) {
     row = document.createElement('div');
@@ -29,8 +35,12 @@ function createItem() {
 }
 
 //todo place in a function
-for (let i = 0; i < DIM; i++){
-    boardRow = createRow(DIM);
-    container.appendChild(boardRow);
+function createBoard(dimension) {
+    for (let i = 0; i < dimension; i++){
+        boardRow = createRow(dimension);
+        container.appendChild(boardRow);
+    }
 }
+
+createBoard(DEFAULT_DIMENSION);
 

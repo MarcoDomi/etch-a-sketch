@@ -34,12 +34,18 @@ function createRow(itemCount) {
     return row
 }
 
-function randomColor() {
-    const MAX_BITS = 256;
-    let r = Math.floor(Math.random() * MAX_BITS);
-    let g = Math.floor(Math.random() * MAX_BITS);
-    let b = Math.floor(Math.random() * MAX_BITS);
-    return `rgb(${r},${g},${b});`;
+function getRandomColor() {
+    const hexCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+    const colorCodeLength = 6;
+
+    let colorCode = '#';
+
+    for (let i = 0; i < colorCodeLength; i++){
+        index = Math.floor(Math.random() * hexCharacters.length);
+        colorCode += hexCharacters[index];
+    }
+    console.log(colorCode);
+    return colorCode;
 }
 
 function createItem() {
@@ -50,7 +56,7 @@ function createItem() {
     item.style.border = '1px solid black';
 
     item.addEventListener('mouseover', function(event){
-        event.target.style.backgroundColor = 'cyan';
+        event.target.style.backgroundColor = getRandomColor();
     });
 
     return item

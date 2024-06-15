@@ -1,6 +1,6 @@
 const DEFAULT_DIMENSION = 16;//remove later
 
-let resetBtn = document.querySelector('button');
+let resetBtn = document.querySelector('#newBoard');
 
 resetBtn.addEventListener('click', () => {
     let new_dimension = prompt('enter new dimension');

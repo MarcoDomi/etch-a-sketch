@@ -32,11 +32,12 @@ function updateOpacity(event) {
 
 function applyColor(event) {
     event.target.style.backgroundColor = getRandomColor();
-    updateOpacity(event);
+    updateOpacity(event); //might remove
 }
 
 function applyEraser(event) {
     event.target.style.backgroundColor = 'white';
+    event.target.style.opacity = '0'; //might remove
 }
 
 resetBtn.addEventListener('click', () => {
@@ -78,7 +79,7 @@ function createItem() {
     item.style.height = '20px';
     item.style.width = '100%';
     item.style.border = '1px solid black';
-    item.style.opacity = '0';
+    item.style.opacity = '0'; //might remove
     item.addEventListener('mouseover', applyColor);
 
     return item

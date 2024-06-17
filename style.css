@@ -4,6 +4,7 @@ body{
 #container {
     border: 1px black solid;
     width: 960px;
+    height: 600px;
     background-color: white;
 }
 
@@ -12,11 +13,12 @@ button {
 }
 
 .row {
-    display: flex;
+    display: flex; 
 }
 
 .item {
-    height: 20px;
-    width: 100%;
-    border: 1px solid black;
+    height: 6px; /*will change*/
+    width: 10px; /*will change*/
+    box-sizing: border-box;
+    border: 1px solid lightgray;
 }

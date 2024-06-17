@@ -19,26 +19,14 @@ function getRandomColor() {
    
     return colorCode;
 }
-/*
-function updateOpacity(event) {
-    let currentOpacity = Number(event.target.style.opacity);
-    if (currentOpacity < 10) {
-        console.log('hello');
-        let newOpacity = currentOpacity + 0.1;
-        event.target.style.opacity = newOpacity;
-        console.log(event.target.style.opacity);
-    }
-}
-*/
+
 
 function applyColor(event) {
     event.target.style.backgroundColor = getRandomColor();
-    //updateOpacity(event); //might remove
 }
 
 function applyEraser(event) {
     event.target.style.backgroundColor = 'white';
-    //event.target.style.opacity = '0'; //might remove
 }
 
 resetBtn.addEventListener('click', () => {
@@ -49,7 +37,6 @@ resetBtn.addEventListener('click', () => {
         }
         
         let body = document.querySelector('body'); 
-        //let container = document.querySelector('#container'); //might remove
         body.removeChild(container); 
     
         let new_container = document.createElement('div');
@@ -86,11 +73,7 @@ gridBtn.addEventListener('click', () => {
 
 function createItem() {
     item = document.createElement('div');
-    item.classList.add('item');
-    item.style.height = '20px';
-    item.style.width = '100%';
-    item.style.border = '1px solid black';
-    //item.style.opacity = '0'; //might remove
+    item.classList.add('item'); 
     item.addEventListener('mouseover', applyColor);
 
     return item
@@ -100,7 +83,6 @@ function createItem() {
 function createRow(itemCount) {
     row = document.createElement('div');
     row.classList.add('row');
-    row.style.display = 'flex';
 
     for (let i = 0; i < itemCount; i++){
         let rowItem = createItem();

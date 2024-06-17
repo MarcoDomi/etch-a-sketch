@@ -10,3 +10,13 @@ body{
 button {
     margin-bottom: 15px;
 }
+
+.row {
+    display: flex;
+}
+
+.item {
+    height: 20px;
+    width: 100%;
+    border: 1px solid black;
+}

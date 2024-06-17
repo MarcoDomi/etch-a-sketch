@@ -1,10 +1,11 @@
-const DEFAULT_DIMENSION = 16;//remove later
+let dimensionCount = 16;
 
 let resetBtn = document.querySelector('#newBoard');
 let colorBtn = document.querySelector('#color');
 let eraserBtn = document.querySelector('#eraser')
 let gridBtn = document.querySelector('#gridlines');
 let rowItems = null;
+
 
 function getRandomColor() {
     const hexCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
@@ -35,9 +36,9 @@ resetBtn.addEventListener('click', () => {
         while (new_dimension <= 0 || new_dimension > 100) {
             new_dimension = prompt('ERROR: enter a valid dimension');
         }
-        
-        let body = document.querySelector('body'); 
-        body.removeChild(container); 
+        dimensionCount = new_dimension
+        let body = document.querySelector('body');
+        body.removeChild(container);
     
         let new_container = document.createElement('div');
         new_container.setAttribute('id', 'container');
@@ -71,9 +72,22 @@ gridBtn.addEventListener('click', () => {
     });
 });
 
+
+function calculateItemDimension() {
+    let container = document.querySelector('#container');
+    let boardDimension = container.offsetWidth;
+
+    return boardDimension / dimensionCount;
+}
+
+
 function createItem() {
     item = document.createElement('div');
-    item.classList.add('item'); 
+    item.classList.add('item');
+    
+    item.style.width = calculateItemDimension() + 'px';
+    item.style.height = calculateItemDimension() + 'px';
+    
     item.addEventListener('mouseover', applyColor);
 
     return item
@@ -103,4 +117,4 @@ function createBoard(dimension) {
     rowItems = document.querySelectorAll('.item');
 }
 
-createBoard(DEFAULT_DIMENSION);
+createBoard(dimensionCount);

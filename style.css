@@ -3,7 +3,7 @@ body{
 }
 #container {
     border: 1px black solid;
-    width: 960px;
+    width: 600px;
     height: 600px;
     background-color: white;
 }

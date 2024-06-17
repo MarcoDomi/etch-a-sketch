@@ -3,6 +3,7 @@ const DEFAULT_DIMENSION = 16;//remove later
 let resetBtn = document.querySelector('#newBoard');
 let colorBtn = document.querySelector('#color');
 let eraserBtn = document.querySelector('#eraser')
+let gridBtn = document.querySelector('#gridlines');
 let rowItems = null;
 
 function getRandomColor() {
@@ -70,6 +71,16 @@ eraserBtn.addEventListener('click', () => {
     rowItems.forEach(rowItem => {
         rowItem.removeEventListener('mouseover', applyColor);
         rowItem.addEventListener('mouseover', applyEraser);
+    });
+});
+
+gridBtn.addEventListener('click', () => {
+    rowItems.forEach(rowItem => {
+        if (rowItem.style.border !== 'none')
+            rowItem.style.border = 'none';
+        else {
+            rowItem.style.border = '1px solid black';
+        }
     });
 });
 

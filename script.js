@@ -19,7 +19,7 @@ function getRandomColor() {
    
     return colorCode;
 }
-
+/*
 function updateOpacity(event) {
     let currentOpacity = Number(event.target.style.opacity);
     if (currentOpacity < 10) {
@@ -29,16 +29,16 @@ function updateOpacity(event) {
         console.log(event.target.style.opacity);
     }
 }
-
+*/
 
 function applyColor(event) {
     event.target.style.backgroundColor = getRandomColor();
-    updateOpacity(event); //might remove
+    //updateOpacity(event); //might remove
 }
 
 function applyEraser(event) {
     event.target.style.backgroundColor = 'white';
-    event.target.style.opacity = '0'; //might remove
+    //event.target.style.opacity = '0'; //might remove
 }
 
 resetBtn.addEventListener('click', () => {
@@ -49,7 +49,7 @@ resetBtn.addEventListener('click', () => {
         }
         
         let body = document.querySelector('body'); 
-        let container = document.querySelector('#container'); //might remove
+        //let container = document.querySelector('#container'); //might remove
         body.removeChild(container); 
     
         let new_container = document.createElement('div');
@@ -90,7 +90,7 @@ function createItem() {
     item.style.height = '20px';
     item.style.width = '100%';
     item.style.border = '1px solid black';
-    item.style.opacity = '0'; //might remove
+    //item.style.opacity = '0'; //might remove
     item.addEventListener('mouseover', applyColor);
 
     return item

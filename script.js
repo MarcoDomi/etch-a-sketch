@@ -5,6 +5,7 @@ let colorBtn = document.querySelector('#rainbow');
 let eraserBtn = document.querySelector('#eraser')
 let gridBtn = document.querySelector('#gridlines');
 let clearBtn = document.querySelector('#clear');
+let brushBtn = document.querySelector('#brush')
 let rowItems = null;
 
 
@@ -31,6 +32,10 @@ function applyEraser(event) {
     event.target.style.backgroundColor = 'white';
 }
 
+function applyBlack(event) {
+    event.target.style.backgroundColor = 'black';
+}
+
 resetBtn.addEventListener('click', () => {
     let new_dimension = prompt('enter new dimension');
     if (new_dimension != null) {
@@ -38,12 +43,12 @@ resetBtn.addEventListener('click', () => {
             new_dimension = prompt('ERROR: enter a valid dimension');
         }
         dimensionCount = new_dimension
-        let body = document.querySelector('body');
-        body.removeChild(container);
+        let centerContainer = document.querySelector('#center');
+        centerContainer.removeChild(container);
     
         let new_container = document.createElement('div');
         new_container.setAttribute('id', 'container');
-        body.appendChild(new_container);
+        centerContainer.appendChild(new_container);
         
         createBoard(new_dimension);
     }
@@ -52,6 +57,7 @@ resetBtn.addEventListener('click', () => {
 colorBtn.addEventListener('click', () => {
     rowItems.forEach(rowItem => {
         rowItem.removeEventListener('mouseover', applyEraser);
+        rowItem.removeEventListener('mouseover', applyBlack);
         rowItem.addEventListener('mouseover', applyColor);
     }); 
 });
@@ -59,9 +65,19 @@ colorBtn.addEventListener('click', () => {
 eraserBtn.addEventListener('click', () => {
     rowItems.forEach(rowItem => {
         rowItem.removeEventListener('mouseover', applyColor);
+        rowItem.removeEventListener('mouseover', applyBlack);
         rowItem.addEventListener('mouseover', applyEraser);
     });
 });
+
+brushBtn.addEventListener('click', () => {
+    rowItems.forEach(rowItem => {
+        rowItem.removeEventListener('mouseover', applyColor);
+        rowItem.removeEventListener('mouseover', applyEraser);
+        rowItem.addEventListener('mouseover', applyBlack);
+    });
+});
+
 //items are set to border-box so adding a border does not make item any bigger
 gridBtn.addEventListener('click', () => {
     rowItems.forEach(rowItem => {
@@ -78,6 +94,8 @@ clearBtn.addEventListener('click', () => {
         rowItem.style.backgroundColor = 'white';
     });
 });
+
+
 
 function calculateItemDimension() {
     let container = document.querySelector('#container');

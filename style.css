@@ -4,25 +4,39 @@ body{
 
 #super-container{
     display: flex;
-    justify-content: space-around;
-    gap: 0px;
+    justify-content: center;
+    gap: 55px;
 }
 
 #left-menu{
     display: flex;
     flex-direction: column;
     align-items: right;
-    justify-content: space-evenly;
-    border: 1px solid red;
+    width: 150px;
+    justify-content: center;
+    gap: 39px;
 }
 
-#left-menu > *{
-    padding: 6px;
-    font-size: larger;
+#left-menu > *, #newBoard{
+    padding: 10px 15px 10px 15px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 254, 217);
+    background-color: gray; 
+    border-radius: 20px;
+    border: 2px solid black;
+    
+}
+
+#left-menu > *:hover, #newBoard:hover{
+    background-color: darkgray;
 }
 
 h1 {
     text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 254, 217);
 }
 
 #container {
@@ -30,6 +44,7 @@ h1 {
     width: 600px;
     height: 600px;
     background-color: white;
+    padding-bottom: 3px;
 }
 
 button {

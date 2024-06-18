@@ -1,13 +1,6 @@
 let dimensionCount = 16;
 
 let resetBtn = document.querySelector('#newBoard');
-
-let rainbowBtn = document.querySelector('#rainbow');
-let eraserBtn = document.querySelector('#eraser')
-let gridBtn = document.querySelector('#gridlines');
-let clearBtn = document.querySelector('#clear');
-let brushBtn = document.querySelector('#brush')
-
 let leftMenu = document.querySelector('#left-menu');
 let rowItems = null;
 
@@ -25,8 +18,6 @@ function getRandomColor() {
    
     return colorCode;
 }
-
-
 
 function applyColor(event) {
     event.target.style.backgroundColor = getRandomColor();
@@ -119,7 +110,7 @@ function createItem() {
     item.style.width = calculateItemDimension() + 'px';
     item.style.height = calculateItemDimension() + 'px';
     
-    item.addEventListener('mouseover', applyColor);
+    item.addEventListener('mouseover', applyBlack);
 
     return item
 }

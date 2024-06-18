@@ -61,7 +61,7 @@ eraserBtn.addEventListener('click', () => {
         rowItem.addEventListener('mouseover', applyEraser);
     });
 });
-
+//items are set to border-box so adding a border does not make item any bigger
 gridBtn.addEventListener('click', () => {
     rowItems.forEach(rowItem => {
         if (rowItem.style.border !== 'none')
@@ -72,14 +72,12 @@ gridBtn.addEventListener('click', () => {
     });
 });
 
-
 function calculateItemDimension() {
     let container = document.querySelector('#container');
     let boardDimension = container.offsetWidth;
 
     return boardDimension / dimensionCount;
 }
-
 
 function createItem() {
     item = document.createElement('div');
@@ -93,7 +91,6 @@ function createItem() {
     return item
 }
 
-
 function createRow(itemCount) {
     row = document.createElement('div');
     row.classList.add('row');
@@ -105,7 +102,6 @@ function createRow(itemCount) {
 
     return row
 }
-
 
 function createBoard(dimension) {
     let container = document.querySelector('#container');

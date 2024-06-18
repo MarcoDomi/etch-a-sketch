@@ -1,7 +1,7 @@
 let dimensionCount = 16;
 
 let resetBtn = document.querySelector('#newBoard');
-let colorBtn = document.querySelector('#color');
+let colorBtn = document.querySelector('#rainbow');
 let eraserBtn = document.querySelector('#eraser')
 let gridBtn = document.querySelector('#gridlines');
 let rowItems = null;

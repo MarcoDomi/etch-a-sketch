@@ -1,8 +1,32 @@
 body{
-    background-color: gray;
+    background-color: rgb(84, 84, 84);
 }
+
+#super-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 0px;
+}
+
+#left-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: space-evenly;
+    border: 1px solid red;
+}
+
+#left-menu > *{
+    padding: 6px;
+    font-size: larger;
+}
+
+h1 {
+    text-align: center;
+}
+
 #container {
-    border: 1px black solid;
+    border: 2px black solid;
     width: 600px;
     height: 600px;
     background-color: white;
@@ -17,8 +41,7 @@ button {
 }
 
 .item {
-    height: 6px; /*will change*/
-    width: 10px; /*will change*/
+   
     box-sizing: border-box;
     border: 1px solid lightgray;
 }

@@ -4,6 +4,7 @@ let resetBtn = document.querySelector('#newBoard');
 let colorBtn = document.querySelector('#rainbow');
 let eraserBtn = document.querySelector('#eraser')
 let gridBtn = document.querySelector('#gridlines');
+let clearBtn = document.querySelector('#clear');
 let rowItems = null;
 
 
@@ -69,6 +70,12 @@ gridBtn.addEventListener('click', () => {
         else {
             rowItem.style.border = '1px solid black';
         }
+    });
+});
+
+clearBtn.addEventListener('click', () => {
+    rowItems.forEach(rowItem => {
+        rowItem.style.backgroundColor = 'white';
     });
 });
 

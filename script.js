@@ -1,11 +1,14 @@
 let dimensionCount = 16;
 
 let resetBtn = document.querySelector('#newBoard');
-let colorBtn = document.querySelector('#rainbow');
+
+let rainbowBtn = document.querySelector('#rainbow');
 let eraserBtn = document.querySelector('#eraser')
 let gridBtn = document.querySelector('#gridlines');
 let clearBtn = document.querySelector('#clear');
 let brushBtn = document.querySelector('#brush')
+
+let leftMenu = document.querySelector('#left-menu');
 let rowItems = null;
 
 
@@ -24,6 +27,7 @@ function getRandomColor() {
 }
 
 
+
 function applyColor(event) {
     event.target.style.backgroundColor = getRandomColor();
 }
@@ -35,6 +39,52 @@ function applyEraser(event) {
 function applyBlack(event) {
     event.target.style.backgroundColor = 'black';
 }
+
+leftMenu.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch (target.id) {
+        case 'brush':
+            rowItems.forEach(rowItem => {
+                rowItem.removeEventListener('mouseover', applyColor);
+                rowItem.removeEventListener('mouseover', applyEraser);
+                rowItem.addEventListener('mouseover', applyBlack);
+            });
+            break;
+        
+        case 'rainbow':
+            rowItems.forEach(rowItem => {
+                rowItem.removeEventListener('mouseover', applyEraser);
+                rowItem.removeEventListener('mouseover', applyBlack);
+                rowItem.addEventListener('mouseover', applyColor);
+            });
+            break;
+        
+        case 'eraser':
+            rowItems.forEach(rowItem => {
+                rowItem.removeEventListener('mouseover', applyColor);
+                rowItem.removeEventListener('mouseover', applyBlack);
+                rowItem.addEventListener('mouseover', applyEraser);
+            });
+            break;
+        
+        case 'gridlines'://items are set to border-box so dont need to worry about border making elements bigger
+            rowItems.forEach(rowItem => {
+                if (rowItem.style.border !== 'none')
+                    rowItem.style.border = 'none';
+                else {
+                    rowItem.style.border = '1px solid lightgray';
+                }
+            });
+            break;
+        
+        case 'clear':
+            rowItems.forEach(rowItem => {
+                rowItem.style.backgroundColor = 'white';
+            });
+            break;
+    }
+});
 
 resetBtn.addEventListener('click', () => {
     let new_dimension = prompt('enter new dimension');
@@ -53,48 +103,6 @@ resetBtn.addEventListener('click', () => {
         createBoard(new_dimension);
     }
 });
-
-colorBtn.addEventListener('click', () => {
-    rowItems.forEach(rowItem => {
-        rowItem.removeEventListener('mouseover', applyEraser);
-        rowItem.removeEventListener('mouseover', applyBlack);
-        rowItem.addEventListener('mouseover', applyColor);
-    }); 
-});
-
-eraserBtn.addEventListener('click', () => {
-    rowItems.forEach(rowItem => {
-        rowItem.removeEventListener('mouseover', applyColor);
-        rowItem.removeEventListener('mouseover', applyBlack);
-        rowItem.addEventListener('mouseover', applyEraser);
-    });
-});
-
-brushBtn.addEventListener('click', () => {
-    rowItems.forEach(rowItem => {
-        rowItem.removeEventListener('mouseover', applyColor);
-        rowItem.removeEventListener('mouseover', applyEraser);
-        rowItem.addEventListener('mouseover', applyBlack);
-    });
-});
-
-//items are set to border-box so adding a border does not make item any bigger
-gridBtn.addEventListener('click', () => {
-    rowItems.forEach(rowItem => {
-        if (rowItem.style.border !== 'none')
-            rowItem.style.border = 'none';
-        else {
-            rowItem.style.border = '1px solid black';
-        }
-    });
-});
-
-clearBtn.addEventListener('click', () => {
-    rowItems.forEach(rowItem => {
-        rowItem.style.backgroundColor = 'white';
-    });
-});
-
 
 
 function calculateItemDimension() {

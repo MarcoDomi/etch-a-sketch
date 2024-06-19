@@ -88,21 +88,37 @@ leftMenu.addEventListener('click', (event) => {
     }
 });
 
+function setDefaultBtnColor() {
+    let brushBtn = document.querySelector('#brush');
+    let activeBtn = document.querySelector('.draw-active');
+    let gridBtn = document.querySelector('#gridlines');
+
+    activeBtn.classList.remove('draw-active');
+    brushBtn.classList.add('draw-active');
+
+    if (!gridBtn.classList.contains('grid-active')) {
+        gridBtn.classList.add('grid-active');
+    }
+
+}
+
 resetBtn.addEventListener('click', () => {
-    let new_dimension = prompt('enter new dimension');
-    if (new_dimension != null) {
-        while (new_dimension <= 0 || new_dimension > 100) {
-            new_dimension = prompt('ERROR: enter a valid dimension');
+    let dimensionInput = prompt('enter new dimension');
+    if (dimensionInput != null) {
+        while (dimensionInput <= 0 || dimensionInput > 100) {
+            dimensionInput = prompt('ERROR: enter a valid dimension');
         }
-        dimensionCount = new_dimension
+        dimensionCount = dimensionInput
         let centerContainer = document.querySelector('#center');
         centerContainer.removeChild(container);
     
         let new_container = document.createElement('div');
         new_container.setAttribute('id', 'container');
         centerContainer.appendChild(new_container);
-        
-        createBoard(new_dimension);
+
+       
+        setDefaultBtnColor();
+        createBoard(dimensionInput);
     }
 });
 
@@ -140,6 +156,8 @@ function createRow(itemCount) {
     return row
 }
 
+
+
 function createBoard(dimension) {
     let container = document.querySelector('#container');
     for (let i = 0; i < dimension; i++){
@@ -148,6 +166,7 @@ function createBoard(dimension) {
     }
 
     rowItems = document.querySelectorAll('.item');
+    
 }
 
 createBoard(dimensionCount);

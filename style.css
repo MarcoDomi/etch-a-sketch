@@ -17,6 +17,8 @@ body{
     gap: 39px;
 }
 
+
+
 #left-menu > *, #newBoard{
     padding: 10px 15px 10px 15px;
     font-size: 30px;
@@ -29,15 +31,19 @@ body{
     
 }
 
+#left-menu > .draw-active, #left-menu > .grid-active {
+    color: white;
+    background-color: black;
+}
+
+
+
 #left-menu > *:hover, #newBoard:hover{
     background-color: darkgray;
     color: black;
 }
 
-#brush, #gridlines {
-    background-color: black;
-    color: white;
-}
+
 
 h1 {
     text-align: center;

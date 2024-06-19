@@ -31,20 +31,18 @@ function applyBlack(event) {
     event.target.style.backgroundColor = 'black';
 }
 
-function toggleOn(elem) {
-    elem.style.color = 'white';
-    elem.style.backgroundColor = 'black';
-}
 
-function toggleOff(elem) {
-    elem.style.color = 'rgb(255, 254, 217)';
-    elem.style.backgroundColor = 'gray';
-}
 
 
 leftMenu.addEventListener('click', (event) => {
 
     let target = event.target;
+    
+    if (target.id !== 'gridlines' && target.id !== 'clear') {
+        let prevTarget = document.querySelector('.draw-active');
+        target.classList.toggle('draw-active');
+        prevTarget.classList.toggle('draw-active');
+    }
 
     switch (target.id) {
         case 'brush':
@@ -79,14 +77,7 @@ leftMenu.addEventListener('click', (event) => {
                     rowItem.style.border = '1px solid lightgray';
                 }
             });
-            //might remove
-            if (target.style.color === 'white') {
-                toggleOff(target);
-            }
-            else {
-                toggleOn(target);
-            }
-            //might remove
+            target.classList.toggle('grid-active');
             break;
         
         case 'clear':
@@ -151,15 +142,10 @@ function createRow(itemCount) {
 
 function createBoard(dimension) {
     let container = document.querySelector('#container');
-    let gridBtn = document.querySelector('#gridlines');
-    let brushBtn = document.querySelector('#brush');
     for (let i = 0; i < dimension; i++){
         boardRow = createRow(dimension);
         container.appendChild(boardRow);
     }
-
-    //toggleOn(brushBtn);
-    //toggleOn(gridBtn);
 
     rowItems = document.querySelectorAll('.item');
 }

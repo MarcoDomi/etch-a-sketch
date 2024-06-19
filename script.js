@@ -32,7 +32,7 @@ function applyBlack(elem) {
 }
 
 
-let prevBehavior = applyBlack; //might remove
+let prevBehavior = applyBlack; 
 
 function setContainerEvent(container, currentAction) {
     container.addEventListener('mouseover', (event) => {
@@ -40,7 +40,7 @@ function setContainerEvent(container, currentAction) {
         currentAction(target);
     }); 
 }
-
+//use event delegation to set behavior of cursor when interacting w/ board
 leftMenu.addEventListener('click', (event) => {
 
     let target = event.target;

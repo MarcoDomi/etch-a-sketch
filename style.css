@@ -50,7 +50,7 @@ h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(255, 254, 217);
 }
-
+/*cannot use a border b/c if the cursor touches border the entire board will be colored*/
 #container {
     width: 600px;
     height: 600px;

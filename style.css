@@ -52,11 +52,9 @@ h1 {
 }
 
 #container {
-    border: 2px black solid;
     width: 600px;
     height: 600px;
     background-color: white;
-    padding-bottom: 3px;
 }
 
 button {

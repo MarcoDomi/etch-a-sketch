@@ -19,54 +19,54 @@ function getRandomColor() {
     return colorCode;
 }
 
-function applyColor(event) {
-    event.target.style.backgroundColor = getRandomColor();
+function applyColor(elem) {
+    elem.style.backgroundColor = getRandomColor();
 }
 
-function applyEraser(event) {
-    event.target.style.backgroundColor = 'white';
+function applyEraser(elem) {
+    elem.style.backgroundColor = 'white';
 }
 
-function applyBlack(event) {
-    event.target.style.backgroundColor = 'black';
+function applyBlack(elem) {
+    elem.style.backgroundColor = 'black';
 }
 
 
+let prevBehavior = applyBlack; //might remove
 
+function setContainerEvent(container, currentAction) {
+    container.addEventListener('mouseover', (event) => {
+        let target = event.target;
+        currentAction(target);
+    }); 
+}
 
 leftMenu.addEventListener('click', (event) => {
 
     let target = event.target;
+    let container = document.querySelector('#container');
     
     if (target.id !== 'gridlines' && target.id !== 'clear') {
         let prevTarget = document.querySelector('.draw-active');
         target.classList.toggle('draw-active');
         prevTarget.classList.toggle('draw-active');
-    }
 
+        container.removeEventListener('mouseover', prevBehavior);
+    }
     switch (target.id) {
         case 'brush':
-            rowItems.forEach(rowItem => {
-                rowItem.removeEventListener('mouseover', applyColor);
-                rowItem.removeEventListener('mouseover', applyEraser);
-                rowItem.addEventListener('mouseover', applyBlack);
-            });
+            prevBehavior = applyBlack
+            setContainerEvent(container, prevBehavior);
             break;
         
         case 'rainbow':
-            rowItems.forEach(rowItem => {
-                rowItem.removeEventListener('mouseover', applyEraser);
-                rowItem.removeEventListener('mouseover', applyBlack);
-                rowItem.addEventListener('mouseover', applyColor);
-            });
+            prevBehavior = applyColor
+            setContainerEvent(container, prevBehavior);
             break;
         
         case 'eraser':
-            rowItems.forEach(rowItem => {
-                rowItem.removeEventListener('mouseover', applyColor);
-                rowItem.removeEventListener('mouseover', applyBlack);
-                rowItem.addEventListener('mouseover', applyEraser);
-            });
+            prevBehavior = applyEraser
+            setContainerEvent(container, prevBehavior);
             break;
         
         case 'gridlines'://items are set to border-box so dont need to worry about border making elements bigger
@@ -123,8 +123,6 @@ resetBtn.addEventListener('click', () => {
 });
 
 
-
-
 function calculateItemDimension() {
     let container = document.querySelector('#container');
     let boardDimension = container.offsetWidth;
@@ -165,6 +163,7 @@ function createBoard(dimension) {
         container.appendChild(boardRow);
     }
 
+    setContainerEvent(container, applyBlack);
     rowItems = document.querySelectorAll('.item');
     
 }

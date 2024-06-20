@@ -2,6 +2,13 @@ let input = document.querySelector('#resize-range');
 let leftMenu = document.querySelector('#left-menu');
 let rowItems = null;
 
+function updateInfo(size) {
+    let infoPara = document.querySelector('#size-info');
+    //let text = document.createTextNode($`${size}X${size}`);
+
+    //infoPara.appendChild(text);
+    infoPara.innerText = `${size} X ${size}`
+}
 
 function getRandomColor() {
     const hexCharacters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
@@ -157,6 +164,7 @@ function createBoard(dimension) {
 
     setContainerEvent(container, applyBlack);
     rowItems = document.querySelectorAll('.item');
+    updateInfo(dimension);
     
 }
 

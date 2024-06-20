@@ -116,19 +116,19 @@ input.addEventListener('input', () => {
 });
 
 
-function calculateItemDimension() {
+function calculateItemDimension(value) {
     let container = document.querySelector('#container');
     let boardDimension = container.offsetWidth;
 
-    return boardDimension / input.value;
+    return boardDimension / value;
 }
 
-function createItem() {
+function createItem(itemMeasurement) {
     item = document.createElement('div');
     item.classList.add('item');
     
-    item.style.width = calculateItemDimension() + 'px';
-    item.style.height = calculateItemDimension() + 'px';
+    item.style.width = itemMeasurement + 'px';
+    item.style.height = itemMeasurement + 'px';
 
     return item
 }
@@ -138,7 +138,8 @@ function createRow(itemCount) {
     row.classList.add('row');
 
     for (let i = 0; i < itemCount; i++){
-        let rowItem = createItem();
+        let itemMeasurement = calculateItemDimension(input.value);
+        let rowItem = createItem(itemMeasurement);
         row.appendChild(rowItem);
     }
 

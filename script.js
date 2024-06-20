@@ -1,6 +1,4 @@
-let dimensionCount = 16;
-
-let resetBtn = document.querySelector('#newBoard');
+let input = document.querySelector('#resize-range');
 let leftMenu = document.querySelector('#left-menu');
 let rowItems = null;
 
@@ -102,24 +100,19 @@ function setDefaultBtnColor() {
 
 }
 
-resetBtn.addEventListener('click', () => {
-    let dimensionInput = prompt('enter new dimension');
-    if (dimensionInput != null) {
-        while (dimensionInput <= 0 || dimensionInput > 100) {
-            dimensionInput = prompt('ERROR: enter a valid dimension');
-        }
-        dimensionCount = dimensionInput
-        let centerContainer = document.querySelector('#center');
-        centerContainer.removeChild(container);
+input.addEventListener('input', () => {
     
-        let new_container = document.createElement('div');
-        new_container.setAttribute('id', 'container');
-        centerContainer.appendChild(new_container);
+    let newBoardSize = input.value;
+    let centerContainer = document.querySelector('#center');
+    centerContainer.removeChild(container);
 
-       
-        setDefaultBtnColor();
-        createBoard(dimensionInput);
-    }
+    let new_container = document.createElement('div');
+    new_container.setAttribute('id', 'container');
+    centerContainer.appendChild(new_container);
+    
+    setDefaultBtnColor();
+    createBoard(newBoardSize);
+    
 });
 
 
@@ -127,7 +120,7 @@ function calculateItemDimension() {
     let container = document.querySelector('#container');
     let boardDimension = container.offsetWidth;
 
-    return boardDimension / dimensionCount;
+    return boardDimension / input.value;
 }
 
 function createItem() {
@@ -136,8 +129,6 @@ function createItem() {
     
     item.style.width = calculateItemDimension() + 'px';
     item.style.height = calculateItemDimension() + 'px';
-    
-    item.addEventListener('mouseover', applyBlack);
 
     return item
 }
@@ -168,4 +159,4 @@ function createBoard(dimension) {
     
 }
 
-createBoard(dimensionCount);
+createBoard(input.value);

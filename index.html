@@ -8,7 +8,7 @@
     <body>
         
         <div id="super-container">
-            <div id="left-menu" style="background-color: rgb(52, 52, 52); padding: 17px; ">
+            <div id="left-menu">
                 
                 <button id="brush" class="draw-active">Brush</button>
                 <button id="rainbow">Rainbow</button>
@@ -21,8 +21,9 @@
                 <div id="container"></div>
             </div>
 
-            <div id="right-menu" style="background-color: rgb(52, 52, 52); padding: 17px;">
-                <button id="newBoard">Resize Board</button>
+            <div id="right-menu">
+                <label for="resize">Size</label>
+                <input type="range" id="resize-range" name="resize-range" min="1" max="100" value="16" step="1">
             </div>
         </div>
         <script src="script.js"></script>
